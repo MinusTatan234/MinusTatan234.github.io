@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+        button {
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        #yesButton {
+            background-color: green;
+            color: white;
+        }
+        #sureButton {
+            background-color: red;
+            color: white;
+        }
+        #message {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        #valentineImage {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img id="valentineImage" src="{{ url_for('static', filename='mymelody.png') }}" alt="Valentine's Day">
+        <h1 id="question">Quieres ser mi Valentin's Date?</h1>
+        <div id="buttonContainer">
+            <button id="yesButton" onclick="showMessage('Gracias! Será aquí')">Si uwu</button>
+            <button id="sureButton" onclick="growButton('yesButton')">No, estás segura?</button>
+        </div>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function growButton(buttonId) {
+            var button = document.getElementById(buttonId);
+            button.style.fontSize = (parseFloat(button.style.fontSize) || 16) + 2 + 'px';
+        }
+
+        function showMessage(text) {
+            document.getElementById('question').innerHTML = text;
+            document.getElementById('yesButton').style.display = 'none';
+            document.getElementById('sureButton').style.display = 'none';
+            document.getElementById('message').innerHTML = '<a href="https://maps.app.goo.gl/EMYqR3P7CrD9ducC8" target="_blank">Ubicación en Google Maps</a>';
+        }
+    </script>
+</body>
+</html>
+
+
